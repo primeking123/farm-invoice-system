@@ -20,13 +20,19 @@
     padding: 0;
 }
 
+nav.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
 body{
  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;                    
     line-height: 1.5;
     color: var(--secondary);
     background-color: var(--bg);
-    display:flex;
+    display: block;
 
     padding: 0 20px;
     max-width: 1200px;
