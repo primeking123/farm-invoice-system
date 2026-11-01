@@ -1,3 +1,5 @@
+@import url('https://googleapis.com');
+
 :root{
     --primary: #1e4620;
     --accent :#f29559;
@@ -267,4 +269,42 @@ p {
   height: 100px;
   margin-bottom: 1rem;
   background: var(--accent);
+  border: 2px #f29559 solid;
+  border-radius: 18px;
 }
+
+.tab-pane img:hover{
+  border: 3.5px solid #1e4620;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: nowrap; 
+  gap: 2rem;         
+  overflow-x: auto;  
+  padding-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-card{
+  
+  margin: 12px;
+
+}
+
+.pricing-card .price-label{
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family:'Roboto Mono', monospace;
+
+
+}
+
+
+.pricing-card .price-label span{
+  font-size: .8rem;
+  font-weight: lighter;
+}
+
+
