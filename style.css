@@ -314,3 +314,15 @@ p {
 }
 
 
+.drawer-body .navbar-nav{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.drawer-body .navbar-nav .nav-link{
+  text-align: right;
+  width:100%;
+}
+
