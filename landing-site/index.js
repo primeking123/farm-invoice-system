@@ -29,4 +29,25 @@ async function loadSections() {
     }
 }
 
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  const isOpening = navLinks.classList.toggle('show');
+  
+  // Swap icons and update accessibility attributes smoothly
+  menuToggle.textContent = isOpening ? '✕' : '☰';
+  menuToggle.setAttribute('aria-expanded', isOpening);
+});
+
+navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+        navLinks.classList.remove('show');
+        menuToggle.textContent = '☰';
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
+});
+
+
 loadSections();
