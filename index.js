@@ -1,6 +1,6 @@
 
 const sections = [
-    { id: "home", file: "home.html" },
+    { id: "hero", file: "hero.html" },
     { id: "solution", file: "solution.html" },
     {id:"how-it-works", file: "how-it-works.html"},
     { id: "pricing", file: "pricing.html" },
