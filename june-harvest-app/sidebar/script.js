@@ -1,28 +1,50 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const navItems = document.querySelectorAll('.nav-item');
+(() => {
+    const sideMenu = document.getElementById("sideMenu");
+    const sidebarContainer = sideMenu?.closest("#sidebar") ?? sideMenu?.parentElement;
+    const mobileToggle = sidebarContainer?.querySelector("#mobileToggle");
 
-    navItems.forEach(function (item) {
-        item.addEventListener('click', function () {
-            navItems.forEach(function (nav) {
-                nav.classList.remove('active');
-            });
-            this.classList.add('active');
+    if (!sideMenu || !sidebarContainer || !mobileToggle) {
+        return;
+    }
 
-            // Close mobile menu after selecting an item
-            const sideMenu = document.querySelector('.side-menu');
-            if (sideMenu) {
-                sideMenu.classList.remove('open');
-            }
+    const navItems = [...sidebarContainer.querySelectorAll(".nav-item")];
+    const normalizePath = path => path.replace(/\/+$/, "") || "/";
+    const currentPath = normalizePath(window.location.pathname);
+
+    navItems.forEach(item => {
+        const link = item.querySelector(".nav-link");
+        const href = link?.getAttribute("href");
+        const isCurrentPage = href && href !== "#" && normalizePath(new URL(href, window.location.href).pathname) === currentPath;
+
+        item.classList.toggle("active", Boolean(isCurrentPage));
+        if (isCurrentPage) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link?.removeAttribute("aria-current");
+        }
+    });
+
+    const setMenuOpen = isOpen => {
+        sideMenu.classList.toggle("open", isOpen);
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    };
+
+    mobileToggle.addEventListener("click", () => {
+        setMenuOpen(!sideMenu.classList.contains("open"));
+    });
+
+    navItems.forEach(item => {
+        item.addEventListener("click", () => {
+            navItems.forEach(navItem => navItem.classList.remove("active"));
+            item.classList.add("active");
+            setMenuOpen(false);
         });
     });
 
-    // Mobile toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const sideMenu = document.querySelector('.side-menu');
-
-    if (mobileToggle && sideMenu) {
-        mobileToggle.addEventListener('click', function () {
-            sideMenu.classList.toggle('open');
-        });
-    }
-});
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            setMenuOpen(false);
+        }
+    });
+})();

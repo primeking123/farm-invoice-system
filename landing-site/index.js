@@ -5,7 +5,7 @@ const sections = [
     {id:"how-it-works", file: "how-it-works.html"},
     { id: "pricing", file: "pricing.html" },
     { id: "about", file: "about.html" },
-    { id: "contact", file: "contact.html" },
+    { id: "contact", file: "contacts.html" },
     { id: "get-started", file: "get-started.html" }
 ];
 

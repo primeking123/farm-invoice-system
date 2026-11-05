@@ -1,40 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
-    fetch('../sidebar/sidebar.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to load sidebar");
+const sidebarUrl = new URL("../sidebar/sidebar.html", document.currentScript.src);
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const sidebarContainer = document.getElementById("sidebar");
+    if (!sidebarContainer) {
+        return;
+    }
+
+    try {
+        const response = await fetch(sidebarUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to load sidebar (${response.status})`);
+        }
+
+        sidebarContainer.innerHTML = await response.text();
+
+        const sideMenu = sidebarContainer.querySelector("#sideMenu");
+        const mobileToggle = sidebarContainer.querySelector("#mobileToggle");
+        const navItems = [...sidebarContainer.querySelectorAll(".nav-item")];
+        const normalizePath = path => path.replace(/\/+$/, "") || "/";
+        const currentPath = normalizePath(window.location.pathname);
+
+        navItems.forEach(item => {
+            const link = item.querySelector(".nav-link");
+            const href = link?.getAttribute("href");
+            const isCurrentPage = href && href !== "#" && normalizePath(new URL(href, window.location.href).pathname) === currentPath;
+
+            item.classList.toggle("active", Boolean(isCurrentPage));
+            if (isCurrentPage) {
+                link.setAttribute("aria-current", "page");
+            } else {
+                link?.removeAttribute("aria-current");
             }
-            return response.text();
-        })
-        .then(data => {
-            const sidebarContainer = document.getElementById('sidebar');
-            sidebarContainer.innerHTML = data;
+        });
 
-            // Attach active state switching after sidebar is loaded
-            const navItems = sidebarContainer.querySelectorAll('.nav-item');
-            navItems.forEach(function (item) {
-                item.addEventListener('click', function () {
-                    navItems.forEach(function (nav) {
-                        nav.classList.remove('active');
-                    });
-                    this.classList.add('active');
+        const setMenuOpen = isOpen => {
+            sideMenu.classList.toggle("open", isOpen);
+            mobileToggle.setAttribute("aria-expanded", String(isOpen));
+            mobileToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+        };
 
-                    // Close mobile menu after selecting an item
-                    const sideMenu = sidebarContainer.querySelector('.side-menu');
-                    if (sideMenu) {
-                        sideMenu.classList.remove('open');
-                    }
-                });
+        mobileToggle.addEventListener("click", () => {
+            setMenuOpen(!sideMenu.classList.contains("open"));
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener("click", () => {
+                if (item.querySelector('.nav-link[aria-disabled="true"]')) {
+                    return;
+                }
+
+                navItems.forEach(navItem => navItem.classList.remove("active"));
+                item.classList.add("active");
+                setMenuOpen(false);
             });
+        });
 
-            // Mobile toggle
-            const mobileToggle = sidebarContainer.querySelector('#mobileToggle');
-            const sideMenu = sidebarContainer.querySelector('.side-menu');
-            if (mobileToggle && sideMenu) {
-                mobileToggle.addEventListener('click', function () {
-                    sideMenu.classList.toggle('open');
-                });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                setMenuOpen(false);
             }
-        })
-        .catch(error => console.error("Error loading the sidebar:", error));
+        });
+
+        sidebarContainer.dataset.sidebarReady = "true";
+    } catch (error) {
+        console.error("Error loading the sidebar:", error);
+    }
 });

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Invoice</title>
+  <link rel="stylesheet" href="../sidebar/sidebar.css">
+  <link rel="stylesheet" href="create-invoice.css">
+</head>
+<body>
+<div class="layout">
+<aside class="app-sidebar">
+  <div id="sidebar"></div>
+</aside>
+
+<div class="page-content">
+<h1>Create Invoice (/invoices/new)</h1>
+
+<main>
+
+  <section id="page-header">
+    <h2>New invoice</h2>
+    <button type="button">Save draft</button>
+  </section>
+
+  <section id="stepper">
+    <ol>
+      <li>Season and buyer</li>
+      <li>Items sold</li>
+      <li>Terms</li>
+      <li>Preview and send</li>
+    </ol>
+  </section>
+
+  <section id="season-buyer">
+    <h2>Season and buyer</h2>
+    <label for="season">Season</label>
+    <select id="season">
+      <option value="">Choose season</option>
+      <option>Quater 1 2026</option>
+      <option>Quater 2 2026</option>
+      <option>Quater 3 2026</option>
+    </select>
+
+    <label for="buyer">Buyer Name</label>
+    <input id="buyer" type="text"name="buyer" placeholder="Type the buyer's name" required>
+    <p><a href="#"> Add new buyer</a></p>
+  </section>
+
+  <section id="items">
+    <h2>Items sold</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity (yield remaining)</th>
+          <th>Unit</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <select>
+              <option>Maize</option>
+              <option>Beans</option>
+              <option>Coffee</option>
+            </select>
+          </td>
+          <td><input type="number" min="0"> <small>Remaining: 500 kg</small></td>
+          <td>kg</td>
+          <td><input type="number" min="0"></td>
+          <td><input type="number" readonly></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Warning:</strong> quantity is over the yield remaining.</p>
+    <button type="button"> Add item</button>
+  </section>
+
+  <section id="terms">
+    <h2>Terms</h2>
+    <label for="num">Invoice number</label>
+    <input id="num" value="INV-0001">
+
+    <label for="issue">Issue date</label>
+    <input id="issue" type="date">
+
+    <label for="due">Due date</label>
+    <input id="due" type="date">
+
+    <label for="cur">Currency</label>
+    <select id="cur">
+      <option>UGX</option>
+    </select>
+
+    <label for="tax">Tax % (if used)</label>
+    <input id="tax" type="number" min="0" value="0">
+
+    <label for="pay">Payment instructions</label>
+    <input id="pay" placeholder="e.g. Mobile money number">
+
+    <label for="notes">Notes</label>
+    <textarea id="notes" rows="3"></textarea>
+  </section>
+
+  <section id="preview">
+    <h2>Preview and send</h2>
+    <pre>Read-only invoice preview appears here.</pre>
+
+    <label for="method">Send method</label>
+    <select id="method">
+      <option>Email</option>
+      <option>WhatsApp</option>
+      <option>Download PDF</option>
+    </select>
+
+    <button type="button"><strong>Send invoice</strong></button>
+  </section>
+
+  <aside id="summary-panel">
+    <h2>Summary</h2>
+    <p>Subtotal: 0</p>
+    <p>Tax: 0</p>
+    <p><strong>Total: 0</strong></p>
+    <p>Yield remaining after this invoice: 0 kg</p>
+  </aside>
+
+  <p><strong>NOTE:</strong> Confirm before sending. Keep data if sending fails. Success screen links to the invoice.</p>
+
+</main>
+</div>
+</div>
+<script src="../assets/sidebar.js"></script>
+</body>
+</html>
