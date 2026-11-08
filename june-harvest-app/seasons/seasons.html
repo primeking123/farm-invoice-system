@@ -6,39 +6,38 @@
         <title>Seasons</title>
     </head>
     <body>
+        <p><b>FARM PLANNING</b></p>
         <h1>Seasons</h1>
+        <p>Organize growing periods and keep the active season clear cross your records.</p>
 
         <div class="season-row">
             <div class="season-card">
-                <h2>Summer</h2>
-                <p>This is summer</p>
+                <p>Active</p>
+                <h2>NONE</h2>
             </div>
             <div class="season-card">
-                <h2>Autumn</h2>
-                <p>This is autumn</p>
+                <p>Planned seasons</p>
+                <h2>0</h2>
             </div>
             <div class="season-card">
-                <h2>Winter</h2>
-                <p>This is winter</p>
+                <p>Complete seasons</p>
+                <h2>0</h2>
             </div>
         </div>
 
         <div class="season-created">
-            <h2>Season Created</h2>
-            <p>Missing informations</p>
+            <h2>Season records</h2>
+            <p>Your saved growing periods and thier current status</p>
             <table>
                 <tr>
                 <th>
-                    Crop
+                    Season
                 </th>
                 <th>
-                    Variety
+                    Start
                 </th>
                 <th>
-                    On hand
-                </th>
-                <th>
-                    Recored
+                    End
                 </th>
                 <th>
                     Status
@@ -48,17 +47,36 @@
                 </th>
                 </tr>
                 <tr>
-                    <td>Maize</td>
-                    <td>2</td>
-                    <td>Yes</td>
-                    <td>200kg</td>
+                    <td>Season_1</td>
+                    <td>24/03/26</td>
+                    <td>23/05/26</td>
+                    <td>Done</td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td>Quater_2</td>
+                    <td>24/05/26</td>
+                    <td>23/07/26</td>
                     <td>Ongoing</td>
-                    <td>Planting</td>
+                    <td>Active</td>
                 </tr>
             </table>
         </div>
         <div class="Contain">
-            <h2>Contain</h2>
+            <h3>Add a Season</h3>
+            <label for="Season_name">Season name</label>
+<input type="text" id="Season_name" placeholder="e.g. Quater 1">
+<label for="Start_date">Start_date</label>
+<input type="text" id="Start_date" placeholder="mm/dd/yyyy">
+<label for="End_date">End_date</label>
+<input type="text" id="End_date" placeholder="mm/dd/yyyy">
+<label for="Status">Status</label>
+<select name="Choices" id="Status">
+    <option value="Planned">Planned</option>
+    <option value="Active">Active</option>
+    <option value="Completed">Complete</option>
+</select>
         </div>
+        <button><b><h3>Save Season</h3></b></button>
     </body>
 </html>

@@ -47,9 +47,54 @@ h1{
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
 }
-.Contain h2{
+.Contain h3{
+    color: #064e3b;
+}
+.season-row p{
+    color: #acb1b8;
+}
+.season-row h2{
+    color: #064e3b;
+    font-family:Arial, Helvetica, sans-serif;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5c5f62;
+}
+.Contain{
+    width: 40%;
     border: 1px solid #d1d5db;
     color: #064e3b;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #f4f6f8;
+    padding: 10px;
+    margin-top: 30px;
+    display: grid;
+    
+}
+.Contain label{
+    font-size: medium;
+    font-display: block;
+    padding-top: 5px;
+
+
+}
+.Contain input,select{
+    border-radius: 3px;
+    border-color: #acb1b8;
+    border: 1px;
+    margin-top:20px ;
+}
+input[type="text"], select {
+  width: 350px;
+  padding: 10px;
+  font-size: 16px;
+}
+button{
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #acb1b8;
+    background-color: #064e3b;
+    color:aliceblue;
+    align-items: center;
 }
