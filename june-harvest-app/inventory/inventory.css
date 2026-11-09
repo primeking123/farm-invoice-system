@@ -35,53 +35,40 @@ body {
 .page-content {
     flex: 1;
     min-width: 0;
-    padding: 28px clamp(18px, 3vw, 40px);
+    padding: 1rem 1.5rem;
 }
 
 .page-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 24px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .page-header h1 {
     margin: 0;
     color: var(--primary);
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 .eyebrow {
     margin: 0 0 4px;
     color: var(--color-text-secondary);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 .page-intro {
     max-width: 650px;
     margin: 6px 0 0;
     color: var(--color-text-secondary);
-    font-size: 0.9rem;
 }
 
 .button {
-    display: inline-flex;
-    min-height: 40px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0.55rem 0.9rem;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 3px;
     font: inherit;
-    font-size: 0.875rem;
-    font-weight: 600;
-    white-space: nowrap;
-    text-decoration: none;
     cursor: pointer;
 }
 
@@ -90,90 +77,68 @@ body {
     color: #fff;
 }
 
-.button-primary:hover {
-    background: #163a1a;
-    color: #fff;
-}
-
 .button-secondary {
-    border-color: var(--color-border-light);
     background: var(--bg);
     color: var(--secondary);
 }
 
-.button-secondary:hover {
-    background: var(--color-surface-hover);
-}
-
 .button-danger {
-    border-color: #e8c9c4;
     background: #fff;
     color: #9c3428;
-}
-
-.button:focus-visible,
-.records-page input:focus-visible,
-.records-page select:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
 }
 
 .metric-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 22px;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
 .metric {
     min-width: 0;
-    padding: 16px 18px;
+    padding: 10px;
     border: 1px solid var(--color-border-light);
-    border-radius: 6px;
-    background: var(--bg);
+    border-radius: 4px;
+    background: var(--bg-sub);
 }
 
 .metric-label {
     display: block;
     color: var(--color-text-secondary);
-    font-size: 0.8rem;
-    font-weight: 600;
 }
 
 .metric-value {
     display: block;
     margin-top: 4px;
     color: var(--primary);
-    font-size: 1.55rem;
-    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .content-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+    grid-template-columns: 1fr;
     align-items: start;
-    gap: 16px;
+    gap: 20px;
 }
 
 .panel {
     min-width: 0;
-    padding: 18px;
+    padding: 10px;
     border: 1px solid var(--color-border-light);
-    border-radius: 6px;
-    background: var(--bg);
+    border-radius: 4px;
+    background: var(--bg-sub);
 }
 
 .panel-heading {
     margin: 0;
     color: var(--primary);
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .panel-copy {
     margin: 5px 0 16px;
     color: var(--color-text-secondary);
-    font-size: 0.85rem;
 }
 
 .table-scroll {
@@ -189,17 +154,15 @@ body {
 
 .records-table th,
 .records-table td {
-    padding: 11px 12px;
+    padding: 10px;
     border-bottom: 1px solid var(--color-border-light);
-    font-size: 0.85rem;
     vertical-align: middle;
 }
 
 .records-table th {
-    background: var(--bg-sub);
+    background: #f4f6f8;
     color: var(--color-text-secondary);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 500;
     white-space: nowrap;
 }
 
@@ -212,33 +175,25 @@ body {
 }
 
 .empty-state {
-    padding: 28px 14px !important;
+    padding: 20px 10px !important;
     color: var(--color-text-secondary);
     text-align: center;
 }
 
 .status-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 8px;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: capitalize;
 }
 
 .status-in-stock {
-    background: #e8f1e7;
     color: var(--primary);
 }
 
 .status-low-stock {
-    background: #fff0df;
     color: #87450f;
 }
 
 .status-out-of-stock {
-    background: #fae9e7;
     color: #9c3428;
 }
 
@@ -249,8 +204,6 @@ body {
 
 .form-field label {
     color: var(--secondary);
-    font-size: 0.8rem;
-    font-weight: 600;
 }
 
 .form-field input,
@@ -258,19 +211,17 @@ body {
 .search-input,
 .stock-adjust-input {
     width: 100%;
-    min-height: 40px;
-    padding: 8px 10px;
+    padding: 8px;
     border: 1px solid var(--color-border-light);
-    border-radius: 4px;
+    border-radius: 3px;
     background: #fff;
     color: var(--secondary);
     font: inherit;
-    font-size: 0.875rem;
 }
 
 .record-form {
     display: grid;
-    gap: 12px;
+    gap: 10px;
 }
 
 .form-actions {
@@ -280,28 +231,26 @@ body {
 }
 
 .form-message {
-    min-height: 1.25em;
+    min-height: 1.2em;
     margin: 0;
     color: var(--color-text-secondary);
-    font-size: 0.8rem;
 }
 
 .list-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin: 12px 0;
+    gap: 10px;
+    margin: 10px 0;
 }
 
 .search-input {
-    max-width: 280px;
+    max-width: 250px;
 }
 
 .stock-adjust-form {
     display: flex;
-    align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .stock-adjust-input {
@@ -310,15 +259,7 @@ body {
 }
 
 .button-small {
-    min-height: 34px;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.78rem;
-}
-
-@media (max-width: 980px) {
-    .content-grid {
-        grid-template-columns: minmax(0, 1fr) 300px;
-    }
+    padding: 5px 8px;
 }
 
 @media (max-width: 768px) {
@@ -335,28 +276,11 @@ body {
         padding: 18px 14px 28px;
     }
 
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 520px) {
-    .page-header {
-        align-items: stretch;
-        flex-direction: column;
-        gap: 12px;
-    }
-
     .metric-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .metric:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
-    }
-
-    .panel {
-        padding: 14px;
+        grid-template-columns: 1fr;
     }
 
     .list-toolbar {
@@ -366,5 +290,9 @@ body {
 
     .search-input {
         max-width: none;
+    }
+
+    .table-scroll {
+        overflow-x: auto;
     }
 }

@@ -15,7 +15,7 @@
         <main class="page-content">
             <header class="page-header">
                 <div>
-                    <p class="eyebrow">Farm supplies and harvest</p>
+                    
                     <h1>Inventory</h1>
                     <p class="page-intro">Track crop stock, units, and reorder levels in one place.</p>
                 </div>
@@ -24,7 +24,7 @@
             <section class="metric-grid" aria-label="Inventory summary">
                 <article class="metric">
                     <span class="metric-label">Items tracked</span>
-                    <strong class="metric-value" id="itemCountMetric">0</strong>
+                    <strong class="metric-value" id="itemCountMetric">3</strong>
                 </article>
                 <article class="metric">
                     <span class="metric-label">Low stock</span>
@@ -32,7 +32,7 @@
                 </article>
                 <article class="metric">
                     <span class="metric-label">Out of stock</span>
-                    <strong class="metric-value" id="outOfStockMetric">0</strong>
+                    <strong class="metric-value" id="outOfStockMetric">1</strong>
                 </article>
             </section>
 
@@ -55,7 +55,44 @@
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="inventoryRows"></tbody>
+                             <tr>
+                                <td>Beans</td>
+                                <td>-</td>
+                                <td>100 kg</td>
+                                <td>20/9/2026</td>
+                                <td>In stock</td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-danger">Remove</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Potato</td>
+                                <td>-</td>
+                                <td>23 bags</td>
+                                <td>15/7/2026</td>
+                                <td>In stock</td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-danger">Remove</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Banana</td>
+                                <td>-</td>
+                                <td>10 tons</td>
+                                <td>20/9/2026</td>
+                                <td>out of stock</td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">Edit</button>
+                                    <button type="button" class="btn btn-danger">Remove</button>
+                                </td>
+                            </tr>
+
+                            <tbody>
+                                
+                            </tbody>
                         </table>
                     </div>
                 </section>

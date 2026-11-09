@@ -23,8 +23,17 @@ body {
     margin: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+.layout > .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.layout{
+    display:flex;
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
 }
 
 .footer {

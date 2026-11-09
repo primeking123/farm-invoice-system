@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>June Harvest | Dashboard</title>
-    <link rel="stylesheet" href="../sidebar/sidebar.css">
-    <link rel="stylesheet" href="dashboard.css">
+<title>June Harvest | Dashboard</title>
+
+<link rel="stylesheet" href="../sidebar/sidebar.css">
+<link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <div class="layout">
-        <aside class="sidebar">
-            <div id="sidebar"></div>
-        </aside>
-        <main class="content">
-            <header class="header">
-                <h2>Dashboard</h2>
-            </header>
-            <div class="dashboard-content">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Total Invoices</h3>
-                        <div class="stat-value">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Paid This Season</h3>
-                        <div class="stat-value">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Outstanding</h3>
-                        <div class="stat-value">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Overdue</h3>
-                        <div class="stat-value">0</div>
-                    </div>
-                </div>
+    <aside>
+        <div id="sidebar"></div>
+    </aside>
 
-                <div class="chart-placeholder">
-                    Sales Overview Chart
-                </div>
+    <main class="content">
+        <header class="header">
+            <h2>Dashboard</h2>
+        </header>
 
-                <h3>Recent Activity</h3>
-                <ul class="activity-list">
-                    <li>
-                        <span>No recent activity</span>
-                        <span class="badge">New</span>
-                    </li>
+        <section class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Invoices</h3>
+                    <p class="stat-value">25</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Paid This Season</h3>
+                    <p class="stat-value">12</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Outstanding</h3>
+                    <p class="stat-value">11</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Overdue</h3>
+                    <p class="stat-value">2</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-content">
+            <div class="chart-placeholder">
+                <img src="../assets/charts.png" alt="chart" srcset="">
+            </div>
+        </section>
+
+        <section class="dashboard-content">
+            <div class="activity-list">
+                <h3 style="font-weight:500;color:var(--primary);font-size:1.2rem;margin:0 0 13px;">Recent Activity</h3>
+                <ul>
+                    <li>No recent activity</li>
                 </ul>
             </div>
-        </main>
+        </section>
+    </main>
     </div>
     <script src="../assets/sidebar.js"></script>
 </body>

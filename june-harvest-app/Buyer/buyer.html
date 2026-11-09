@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>June Harvest | Buyers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../sidebar/sidebar.css">
     <link rel="stylesheet" href="buyer.css">
 </head>
@@ -22,15 +22,15 @@
             <div class="summary-grid">
                 <div class="summary-card">
                     <h3>Total Buyers</h3>
-                    <div class="value">0</div>
+                    <div class="value">4</div>
                 </div>
                 <div class="summary-card">
                     <h3>Total Invoiced</h3>
-                    <div class="value">0</div>
+                    <div class="value">UGX 68,450,000</div>
                 </div>
                 <div class="summary-card">
                     <h3>Outstanding</h3>
-                    <div class="value">0</div>
+                    <div class="value">UGX 11,250,000</div>
                 </div>
             </div>
 
@@ -43,23 +43,59 @@
 
             <section>
                 <h3>Buyer List</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Buyer Name</th>
-                            <th>Contact</th>
-                            <th>Invoice Count</th>
-                            <th>Total Invoiced</th>
-                            <th>Outstanding</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="6" style="text-align:center; color: var(--color-text-secondary);">No buyers added yet</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle buyer-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Buyer</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">District</th>
+                                <th scope="col">Invoices</th>
+                                <th scope="col">Total invoiced</th>
+                                <th scope="col">Outstanding</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kampala Fresh Produce Ltd.</td>
+                                <td>Grace Nansubuga<br><a href="tel:+256772123456">+256 772 123456</a></td>
+                                <td>Kampala</td>
+                                <td>14</td>
+                                <td>UGX 24,500,000</td>
+                                <td>UGX 2,100,000</td>
+                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Jinja Grain Traders</td>
+                                <td>Peter Ssemanda<br><a href="tel:+256783441208">+256 783 441208</a></td>
+                                <td>Jinja</td>
+                                <td>8</td>
+                                <td>UGX 12,750,000</td>
+                                <td>UGX 0</td>
+                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Mbarara Produce Cooperative</td>
+                                <td>Sarah Atim<br><a href="tel:+256701665932">+256 701 665932</a></td>
+                                <td>Mbarara</td>
+                                <td>23</td>
+                                <td>UGX 23,400,000</td>
+                                <td>UGX 8,750,000</td>
+                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Gulu Agro Supplies</td>
+                                <td>Daniel Ocen<br><a href="tel:+256752908314">+256 752 908314</a></td>
+                                <td>Gulu</td>
+                                <td>5</td>
+                                <td>UGX 7,800,000</td>
+                                <td>UGX 400,000</td>
+                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section>
@@ -70,8 +106,12 @@
                         <input type="text" id="buyer-name" class="form-control" placeholder="Buyer full name" required>
                     </div>
                     <div class="form-group">
+                        <label for="buyer-district">District</label>
+                        <input type="text" id="buyer-district" class="form-control" placeholder="e.g. Wakiso">
+                    </div>
+                    <div class="form-group">
                         <label for="buyer-phone">Phone</label>
-                        <input type="tel" id="buyer-phone" class="form-control" placeholder="Phone number">
+                        <input type="tel" id="buyer-phone" class="form-control" placeholder="+256 7XX XXX XXX">
                     </div>
                     <div class="form-group">
                         <label for="buyer-email">Email</label>
@@ -106,7 +146,6 @@
             </section>
         </main>
     </div>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
     <script src="../assets/sidebar.js"></script>
 </body>
 </html>

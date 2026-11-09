@@ -18,19 +18,7 @@
                 <h2>Settings</h2>
                 <button class="save-btn">Save Changes</button>
             </header>
-            <div class="setting-menu-container">
-                <button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">
-                    Toggle menu
-                </button>
-                <div class="menu">
-                    <button class="menu-item active" type="button" data-target="profile">Farm Profile</button>
-                    <button class="menu-item" type="button" data-target="unit-currency">Unit and Currency</button>
-                    <button class="menu-item" type="button" data-target="invoice-settings">Invoice Settings</button>
-                    <button class="menu-item" type="button" data-target="notifications">Notifications</button>
-                    <button class="menu-item" type="button" data-target="security">Security</button>
-                    <button class="menu-item" type="button" data-target="support-privacy">Support and Privacy</button>
-                </div>
-            </div>
+            
             <div class="setting-content">
                 <div id="profile">
                     <h3>Farm Profile</h3>
@@ -123,18 +111,6 @@
         </main>
     </div>
     <script src="../assets/sidebar.js"></script>
-    <script>
-        document.querySelectorAll('.menu-item').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const target = this.getAttribute('data-target');
-                document.querySelectorAll('.setting-content > div').forEach(div => {
-                    div.style.display = 'none';
-                });
-                document.getElementById(target).style.display = 'block';
-            });
-        });
-    </script>
+    
 </body>
 </html>

@@ -1,137 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Invoice</title>
-  <link rel="stylesheet" href="../sidebar/sidebar.css">
-  <link rel="stylesheet" href="create-invoice.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create Invoice | June Harvest</title>
+	<link rel="stylesheet" href="../sidebar/sidebar.css">
+	<link rel="stylesheet" href="create-invoice.css">
 </head>
 <body>
-<div class="layout">
-<aside class="app-sidebar">
-  <div id="sidebar"></div>
-</aside>
+	<div class="layout">
+		<aside class="sidebar" aria-label="Main navigation">
+			<div id="sidebar"></div>
+		</aside>
 
-<div class="page-content">
-<h1>Create Invoice (/invoices/new)</h1>
+		<main class="content">
+			<header class="page-header">
+				<div>
+					<p class="eyebrow">Sales</p>
+					<h1>Create invoice</h1>
+				</div>
+				<button class="button button-secondary" type="button">Save draft</button>
+			</header>
 
-<main>
+			<form>
+				<div class="form-layout">
+					<div class="form-sections">
+						<section class="panel">
+							<h2>Buyer and season</h2>
+							<div class="field-grid">
+								<div class="form-field">
+									<label for="season">Season</label>
+									<select id="season" name="season" required>
+										<option value="">Choose a season</option>
+										<option>Quarter 1, 2026</option>
+										<option>Quarter 2, 2026</option>
+										<option>Quarter 3, 2026</option>
+										<option>Quarter 4, 2026</option>
 
-  <section id="page-header">
-    <h2>New invoice</h2>
-    <button type="button">Save draft</button>
-  </section>
+				         </select>
 
-  <section id="stepper">
-    <ol>
-      <li>Season and buyer</li>
-      <li>Items sold</li>
-      <li>Terms</li>
-      <li>Preview and send</li>
-    </ol>
-  </section>
+								</div>
+								<div class="form-field">
+									<label for="buyer">Buyer</label>
+									<select id="buyer" name="buyer" required>
+										<option value="">Choose a buyer</option>
+										<option>Kampala Fresh Produce Ltd.</option>
+										<option>Jinja Grain Traders</option>
+										<option>Mbarara Produce Cooperative</option>
+										<option>Gulu Agro Supplies</option>
+									</select>
+									<a class="field-link" href="../Buyer/buyer.html">Add a new buyer</a>
+								</div>
+							</div>
+						</section>
 
-  <section id="season-buyer">
-    <h2>Season and buyer</h2>
-    <label for="season">Season</label>
-    <select id="season">
-      <option value="">Choose season</option>
-      <option>Quater 1 2026</option>
-      <option>Quater 2 2026</option>
-      <option>Quater 3 2026</option>
-    </select>
+						<section class="panel">
+							<h2>Items sold</h2>
+							<div class="table-scroll">
+								<table class="items-table">
+									<thead>
+										<tr>
+											<th scope="col">Item</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Unit</th>
+											<th scope="col">Unit price (UGX)</th>
+											<th scope="col">Line total (UGX)</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<select aria-label="Item">
+													<option>Maize</option>
+													<option>Beans</option>
+													<option>Coffee</option>
+													<option>Matooke</option>
+												</select>
+											</td>
+											<td><input aria-label="Quantity" type="number" min="0" step="0.01"></td>
+											<td>
+												<select aria-label="Unit">
+													<option>Bags</option>
+													<option>Kg</option>
+													<option>Crates</option>
+												</select>
+											</td>
+											<td><input aria-label="Unit price in UGX" type="number" min="0" step="1"></td>
+											<td><input aria-label="Line total in UGX" type="number" min="0" step="1" readonly></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<button class="button button-secondary" type="button">Add item</button>
+						</section>
 
-    <label for="buyer">Buyer Name</label>
-    <input id="buyer" type="text"name="buyer" placeholder="Type the buyer's name" required>
-    <p><a href="#"> Add new buyer</a></p>
-  </section>
+						<section class="panel">
+							<h2>Terms</h2>
+							<div class="field-grid">
+								<div class="form-field">
+									<label for="invoice-number">Invoice number</label>
+									<input id="invoice-number" name="invoiceNumber" type="text" value="INV-2026-024">
+								</div>
+								<div class="form-field">
+									<label for="issue-date">Issue date</label>
+									<input id="issue-date" name="issueDate" type="date">
+								</div>
+								<div class="form-field">
+									<label for="due-date">Due date</label>
+									<input id="due-date" name="dueDate" type="date">
+								</div>
+								<div class="form-field">
+									<label for="tax">Tax (%)</label>
+									<input id="tax" name="tax" type="number" min="0" step="0.01" value="0">
+								</div>
+								<div class="form-field field-full">
+									<label for="payment-instructions">Payment instructions</label>
+									<input id="payment-instructions" name="paymentInstructions" type="text" placeholder="Mobile Money or bank transfer details">
+								</div>
+								<div class="form-field field-full">
+									<label for="notes">Notes</label>
+									<textarea id="notes" name="notes" rows="3"></textarea>
+								</div>
+							</div>
+						</section>
+					</div>
 
-  <section id="items">
-    <h2>Items sold</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantity (yield remaining)</th>
-          <th>Unit</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <select>
-              <option>Maize</option>
-              <option>Beans</option>
-              <option>Coffee</option>
-            </select>
-          </td>
-          <td><input type="number" min="0"> <small>Remaining: 500 kg</small></td>
-          <td>kg</td>
-          <td><input type="number" min="0"></td>
-          <td><input type="number" readonly></td>
-        </tr>
-      </tbody>
-    </table>
-    <p><strong>Warning:</strong> quantity is over the yield remaining.</p>
-    <button type="button"> Add item</button>
-  </section>
-
-  <section id="terms">
-    <h2>Terms</h2>
-    <label for="num">Invoice number</label>
-    <input id="num" value="INV-0001">
-
-    <label for="issue">Issue date</label>
-    <input id="issue" type="date">
-
-    <label for="due">Due date</label>
-    <input id="due" type="date">
-
-    <label for="cur">Currency</label>
-    <select id="cur">
-      <option>UGX</option>
-    </select>
-
-    <label for="tax">Tax % (if used)</label>
-    <input id="tax" type="number" min="0" value="0">
-
-    <label for="pay">Payment instructions</label>
-    <input id="pay" placeholder="e.g. Mobile money number">
-
-    <label for="notes">Notes</label>
-    <textarea id="notes" rows="3"></textarea>
-  </section>
-
-  <section id="preview">
-    <h2>Preview and send</h2>
-    <pre>Read-only invoice preview appears here.</pre>
-
-    <label for="method">Send method</label>
-    <select id="method">
-      <option>Email</option>
-      <option>WhatsApp</option>
-      <option>Download PDF</option>
-    </select>
-
-    <button type="button"><strong>Send invoice</strong></button>
-  </section>
-
-  <aside id="summary-panel">
-    <h2>Summary</h2>
-    <p>Subtotal: 0</p>
-    <p>Tax: 0</p>
-    <p><strong>Total: 0</strong></p>
-    <p>Yield remaining after this invoice: 0 kg</p>
-  </aside>
-
-  <p><strong>NOTE:</strong> Confirm before sending. Keep data if sending fails. Success screen links to the invoice.</p>
-
-</main>
-</div>
-</div>
-<script src="../assets/sidebar.js"></script>
+					<aside class="panel invoice-summary">
+						<h2>Preview and send</h2>
+						<dl>
+							<div><dt>Subtotal</dt><dd>UGX 0</dd></div>
+							<div><dt>Tax</dt><dd>UGX 0</dd></div>
+							<div class="summary-total"><dt>Total</dt><dd>UGX 0</dd></div>
+						</dl>
+						<div class="form-field">
+							<label for="send-method">Send by</label>
+							<select id="send-method" name="sendMethod">
+								<option>Email</option>
+								<option>WhatsApp</option>
+							</select>
+						</div>
+						<button class="button button-primary" type="button">Send invoice</button>
+					</aside>
+				</div>
+			</form>
+		</main>
+	</div>
+	<script src="../assets/sidebar.js"></script>
 </body>
 </html>
+
+
+
+

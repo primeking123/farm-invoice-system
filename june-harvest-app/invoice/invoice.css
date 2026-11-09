@@ -19,40 +19,24 @@ body{
     line-height: 1.6;
 }
 
-.layout > .app-sidebar {
+.layout > .sidebar {
     width: 260px;
     flex-shrink: 0;
 }
 
-.layout {
-    display: flex;
+.layout{
+    display:flex;
     min-height: 100vh;
 }
 
-.page-content {
+.invoice-content {
     flex: 1;
     min-width: 0;
+    padding: 1rem 1.5rem;
 }
 
-.table-scroll {
-    max-width: 100%;
-    overflow-x: auto;
-}
-
-.invoice-list table {
-    min-width: 760px;
-}
-
-.invoice-details table {
-    min-width: 540px;
-}
-
-main {
-    flex: 1;
-    padding: 1.5rem;
-}
-
-header {
+.header{
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,163 +48,72 @@ header {
     z-index: 10;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-header button {
-    background-color: var(--primary);
-    color: var(--bg);
-    border: none;
-    padding: 0.6rem 1.25rem;
-    border-radius: 4px;
+.header button{
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
 }
 
-header button:hover {
-    background-color: #163a1a;
+.summary-card{
+    background: var(--bg-sub);
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 1.35rem;
-    font-weight: 600;
+.summary-card h5{
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+.summary-card p{
+    font-weight: 800;
     color: var(--primary);
-    margin-bottom: 1rem;
 }
 
-h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--secondary);
-    margin-bottom: 0.75rem;
-}
-
-/* Totals cards */
-.totals {
+.summary-totals {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 16px;
 }
 
-.totals > div {
-    background-color: var(--bg-sub);
-    padding: 1.25rem;
-    border-radius: 8px;
-    text-align: center;
+.invoice-section,
+.invoice-content > section {
+    margin: 20px 0;
 }
 
-.totals p {
-    margin: 0.25rem 0;
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-}
-
-.totals .amount {
-    font-size: 1.25rem;
-    font-weight: 700;
+.invoice-content section h2 {
     color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
-/* Search bar */
-.navbar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1.5rem;
-}
-
-/* Table */
-table {
+.invoice-list,
+.invoice-details {
     width: 100%;
-    border-collapse: collapse;
-    margin: 1rem 0;
-    background-color: var(--bg);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
-th, td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--color-border-light);
-    font-size: 0.9rem;
-}
-
-th {
-    background-color: var(--bg-sub);
-    font-weight: 600;
-    color: var(--secondary);
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-tr:hover td {
-    background-color: var(--color-surface-hover);
-}
-
-/* Status badges */
-.status-outstanding {
-    color: #d6336c;
-    font-weight: 600;
-}
-
-.status-overdue {
-    color: #dc3545;
-    font-weight: 600;
-}
-
-.status-paid {
-    color: #198754;
-    font-weight: 600;
-}
-
-/* Detail section */
-section {
-    margin-bottom: 2rem;
-    background-color: var(--bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-
-section h3 {
-    margin-top: 0;
-}
-
-/* Summary */
-.summary-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.summary-box h2 {
     margin: 0;
 }
 
-.summary-box div {
-    text-align: right;
+.invoice-list th,
+.invoice-details th {
+    color: var(--primary);
+    background: var(--bg-sub);
+    white-space: nowrap;
 }
 
-.summary-box p {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
+.up_summary{
+    padding: 1rem 1.5rem;
+    background: var(--bg-sub);
+    border: 1px solid var(--color-border-light);
+    border-radius: 4px;
+}
+.summary{
+    color: var(--secondary);
 }
 
-.summary-box .total {
+.summary .num {
+    color: var(--primary);
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--primary);
 }
 
 @media (max-width: 768px) {
@@ -228,37 +121,22 @@ section h3 {
         flex-direction: column;
     }
 
-    .layout > .app-sidebar {
+    .layout > .sidebar {
         width: 100%;
-        max-width: none;
     }
 
-    main {
+    .invoice-content {
         padding: 1rem;
     }
 
-    section {
-        padding: 1rem;
-    }
-
-    .totals {
+    .summary-totals {
         grid-template-columns: 1fr;
+        gap: 0;
     }
 
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem;
-    }
-
-    header button {
-        width: 100%;
+    .header {
+        gap: 12px;
     }
 }
 
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.4rem;
-    }
-}
+

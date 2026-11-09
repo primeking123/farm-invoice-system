@@ -4,20 +4,26 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="seasons.css">
         <title>Seasons</title>
+        <link rel="stylesheet" href="../sidebar/sidebar.css">
     </head>
     <body>
-        <p><b>FARM PLANNING</b></p>
-        <h1>Seasons</h1>
+        <div class="layout">
+        <aside>
+            <div id="sidebar"></div>
+        </aside>
+        <main>
+        <header>
+            <h1>Seasons</h1>
         <p>Organize growing periods and keep the active season clear cross your records.</p>
-
+            </header>
         <div class="season-row">
             <div class="season-card">
                 <p>Active</p>
-                <h2>NONE</h2>
+                <h2>3</h2>
             </div>
             <div class="season-card">
                 <p>Planned seasons</p>
-                <h2>0</h2>
+                <h2>1</h2>
             </div>
             <div class="season-card">
                 <p>Complete seasons</p>
@@ -65,10 +71,11 @@
         <div class="Contain">
             <h3>Add a Season</h3>
             <label for="Season_name">Season name</label>
-<input type="text" id="Season_name" placeholder="e.g. Quater 1">
-<label for="Start_date">Start_date</label>
-<input type="text" id="Start_date" placeholder="mm/dd/yyyy">
-<label for="End_date">End_date</label>
+            <input type="text" id="Season_name" placeholder="e.g. Quater 1 2026">
+            <label for="Start_date">Start_date</label>
+            
+     <input type="text" id="Start_date" placeholder="mm/dd/yyyy">
+    <label for="End_date">End_date</label>
 <input type="text" id="End_date" placeholder="mm/dd/yyyy">
 <label for="Status">Status</label>
 <select name="Choices" id="Status">
@@ -76,7 +83,12 @@
     <option value="Active">Active</option>
     <option value="Completed">Complete</option>
 </select>
-        </div>
-        <button><b><h3>Save Season</h3></b></button>
+        <button>Save Season</button>
+
+         </div>
+
+</main>
+</div>
+        <script src="../assets/sidebar.js"></script>
     </body>
 </html>
