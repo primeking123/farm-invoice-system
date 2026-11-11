@@ -1,83 +1,133 @@
-<section style="padding: 2rem; max-width: 1200px; margin: 0 auto; ">
-    <h2 class="section-heading">How It Works</h2>
-    <h3 style="text-align: center;">Smarter Season Management. Better Business Decisions.</h3>
-    <p>Manage your imports, track inventory, monitor output, analyze business performance, and generate professional invoices — all from one centralized platform.</p>
-    <div class="contains-inline">
-  <div class="card-group">
-  <div class="card card-1">
-    <div><i class="bi bi-pen"></i></div>
-    <div class="card-body">
-      <h4 class="card-title">1.Set Up Your Season</h4>
-      <p class="card-text">Create a new season, define its reporting period, and organize your products, suppliers, and customers in one place.</p>
+<section class="section-container how-it-works-section">
+    <div class="section-header">
+        <span class="section-eyebrow">The Farming Cycle</span>
+        <h2 class="section-title">How June Harvest Works</h2>
+        <p class="section-subtitle">
+            Smarter season management leading to better business decisions. Follow your crop from planting to financial statement.
+        </p>
     </div>
-    
-  </div>
-  <div class="card card-1">
-    <div><i class="bi bi-folder-plus"></i>></div>
-    <div class="card-body">
-      <h4 class="card-title">2.Record Imports & Manage Inventory</h4>
-      <p class="card-text">Record every incoming shipment, including quantities, purchase costs, and associated expenses. Monitor stock movements, available inventory, and losses as they occur.</p>
+
+    <!-- Step summary cards -->
+    <div class="steps-grid">
+        <div class="step-card">
+            <span class="step-badge">1</span>
+            <h3>Set Up Season</h3>
+            <p>Define your quarterly growing cycle (Quarter 1–4 of the year) and lock in your active production period.</p>
+        </div>
+        <div class="step-card">
+            <span class="step-badge">2</span>
+            <h3>Manage Inventory</h3>
+            <p>Track incoming produce, crop varieties, quantities in bags or kg, and receive low-stock reorder alerts.</p>
+        </div>
+        <div class="step-card">
+            <span class="step-badge">3</span>
+            <h3>Issue Invoices</h3>
+            <p>Generate clean digital invoices for buyers, configure tax and delivery terms, and trace paid vs. overdue amounts.</p>
+        </div>
+        <div class="step-card">
+            <span class="step-badge">4</span>
+            <h3>Export Reports</h3>
+            <p>Turn seasonal transactions into verifiable financial statements ready for bank credit and buyer auditing.</p>
+        </div>
     </div>
-    
-  </div>
-  <div class="card card-1">
-    <div><i class="bi bi-bar-chart"></i></i></div>
-    <div class="card-body">
-      <h4 class="card-title">3.Track Output & Analyze Performance</h4>
-      <p class="card-text">Record production output or sales, monitor inventory usage, and automatically calculate quantities, revenue, expenses, and estimated profit.</p>
+
+    <!-- Interactive Walkthrough Component -->
+    <div class="walkthrough-box">
+        <div class="walkthrough-nav" role="tablist" aria-label="How it works interactive stages">
+            <button type="button" class="walkthrough-tab active" role="tab" id="stage-tab-1" aria-controls="stage-panel-1" aria-selected="true" data-stage="1">
+                <i class="bi bi-calendar-event" aria-hidden="true"></i>
+                <span>1. Season Setup</span>
+            </button>
+            <button type="button" class="walkthrough-tab" role="tab" id="stage-tab-2" aria-controls="stage-panel-2" aria-selected="false" data-stage="2">
+                <i class="bi bi-box-seam" aria-hidden="true"></i>
+                <span>2. Crop Stock</span>
+            </button>
+            <button type="button" class="walkthrough-tab" role="tab" id="stage-tab-3" aria-controls="stage-panel-3" aria-selected="false" data-stage="3">
+                <i class="bi bi-receipt" aria-hidden="true"></i>
+                <span>3. Invoicing</span>
+            </button>
+            <button type="button" class="walkthrough-tab" role="tab" id="stage-tab-4" aria-controls="stage-panel-4" aria-selected="false" data-stage="4">
+                <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                <span>4. Financials</span>
+            </button>
+        </div>
+
+        <div class="walkthrough-content">
+            <!-- Stage 1 -->
+            <div class="walkthrough-pane active" id="stage-panel-1" role="tabpanel" aria-labelledby="stage-tab-1">
+                <div class="pane-visual">
+                    <img src="../images/setupseason.svg" alt="Illustration of Season Setup Interface" loading="lazy">
+                </div>
+                <div class="pane-text">
+                    <span class="pane-tag">Stage 1 of 4</span>
+                    <h3>Set Up Your Farming Season</h3>
+                    <p>
+                        Agriculture is dictated by cycles, not calendar months. June Harvest breaks your farming year into clear quarters (e.g. Quarter 1–2026, Quarter 2–2026).
+                    </p>
+                    <ul class="pane-list">
+                        <li><i class="bi bi-check2"></i> Define start and harvest completion dates.</li>
+                        <li><i class="bi bi-check2"></i> Mark single season as "Active" across all application views.</li>
+                        <li><i class="bi bi-check2"></i> Maintain historic archives of completed growing periods.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="walkthrough-pane" id="stage-panel-2" role="tabpanel" aria-labelledby="stage-tab-2" hidden>
+                <div class="pane-visual">
+                    <img src="../images/import.svg" alt="Illustration of Inventory and Stock Tracking" loading="lazy">
+                </div>
+                <div class="pane-text">
+                    <span class="pane-tag">Stage 2 of 4</span>
+                    <h3>Record Imports & Inventory</h3>
+                    <p>
+                        Keep track of crops, seeds, and harvested produce on hand so you never undersell or lose track of stock reserves.
+                    </p>
+                    <ul class="pane-list">
+                        <li><i class="bi bi-check2"></i> Support for standard farm units: kg, bags, crates, and tons.</li>
+                        <li><i class="bi bi-check2"></i> Automated status tagging: In Stock, Low Stock, Out of Stock.</li>
+                        <li><i class="bi bi-check2"></i> Real-time restock adjustment and quick deletion controls.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="pane-visual-container walkthrough-pane" id="stage-panel-3" role="tabpanel" aria-labelledby="stage-tab-3" hidden>
+                <div class="pane-visual">
+                    <img src="../images/invoices.svg" alt="Illustration of Invoicing System" loading="lazy">
+                </div>
+                <div class="pane-text">
+                    <span class="pane-tag">Stage 3 of 4</span>
+                    <h3>Generate Invoices & Track Buyers</h3>
+                    <p>
+                        Issue professional invoices directly to buyers, complete with unit pricing in UGX, terms, and payment instructions.
+                    </p>
+                    <ul class="pane-list">
+                        <li><i class="bi bi-check2"></i> Standardized sequential invoice numbers (INV-YYYY-XXX).</li>
+                        <li><i class="bi bi-check2"></i> Track payment status: Outstanding, Paid, and Overdue.</li>
+                        <li><i class="bi bi-check2"></i> Full buyer directory with districts, contacts, and trade history.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="walkthrough-pane" id="stage-panel-4" role="tabpanel" aria-labelledby="stage-tab-4" hidden>
+                <div class="pane-visual">
+                    <img src="../images/output.svg" alt="Illustration of Reports and Analytics" loading="lazy">
+                </div>
+                <div class="pane-text">
+                    <span class="pane-tag">Stage 4 of 4</span>
+                    <h3>Season Reports & Financial Statements</h3>
+                    <p>
+                        Turn day-to-day farm outputs into consolidated performance reports. Export directly to Excel (CSV) or formal PDF documents.
+                    </p>
+                    <ul class="pane-list">
+                        <li><i class="bi bi-check2"></i> Total revenue, collected payments, and overdue aging breakdown.</li>
+                        <li><i class="bi bi-check2"></i> One-click export to Excel (.csv) with UTF-8 formatting.</li>
+                        <li><i class="bi bi-check2"></i> Formal print/PDF formatting for bank loan officers and investors.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    
-  </div>
-  <div class="card card-1">
-    <div><i class="bi bi-printer"></i></div>
-    <div class="card-body">
-      <h4 class="card-title">4.Generate Invoices & Final Reports</h4>
-      <p class="card-text">Create professional invoices, track customer payments and outstanding balances, and generate a comprehensive season report showing imports, output, closing inventory, and financial performance.</p>
-    </div>
-    
-  </div>
-
-  </div>
-</div>
-
-<div class="d-flex align-items-start" >
-<div class="nav-2 nav nav-pills nav-pills-vertical me-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="tab" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">One</button>
-  <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="tab" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Two</button>
-  <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="tab" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">Three</button>
-  <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="tab" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Four</button>
-  
-</div>
-<div class="tab-content" id="v-pills-tabContent">
-
-  <div class="tab-pane show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
-    <img src="../images/setupseason.svg" alt="Set Up Your Season">
-    <h4>Set Up Your Season</h4>
-    <p>Create and organize a season before recording transactions.</p>
-  </div>
-
-  <div class="tab-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-    <img src="../images/import.svg" alt="Record Imports & Manage Inventory">
-    <h4>Import & Inventory</h4>
-    <p>Keep incoming goods, stock, balances and movements organized.</p>
-  </div>
-
-  <div class="tab-pane" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
-    <img src="../images/output.svg" alt="Output & Statistics">
-    <h4>Output & statistics</h4>
-    <p>Understand operational results and financial performance.</p>
-  </div>
-
-  <div class="tab-pane" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
-    <img src="../images/invoices.svg" alt="Generate Invoices & Reports">
-    <h4>Invoices & Reports</h4>
-    <p>Finalize transactions and prepare the season's summary.</p>
-  </div>
-
-
-</div>
-</div>
-</div>
-<br>
-<p style="text-align: center;padding: 6px;">Simplify your operations, maintain accurate records, and gain clear insights into every season.</p>
 </section>

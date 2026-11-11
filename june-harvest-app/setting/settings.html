@@ -3,114 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>June Harvest | Settings</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-    <link rel="stylesheet" href="settings.css">
+    <title>Settings | June Harvest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../sidebar/sidebar.css">
+    <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="settings.css">
 </head>
 <body>
     <div class="layout">
-        <aside class="sidebar">
+        <aside class="app-sidebar">
             <div id="sidebar"></div>
         </aside>
-        <main class="content">
-            <header class="header">
-                <h2>Settings</h2>
-                <button class="save-btn">Save Changes</button>
+
+        <main class="page-content">
+            <header class="page-header">
+                <div class="page-title-group">
+                    <p class="page-eyebrow">Preferences</p>
+                    <h1>Settings</h1>
+                    <p class="page-intro">Configure your farm profile, measurement units, and invoice terms.</p>
+                </div>
+                <button class="btn btn-green" id="saveSettingsBtn" type="button">
+                    <i class="bi bi-check2" aria-hidden="true"></i>
+                    <span>Save Changes</span>
+                </button>
             </header>
-            
-            <div class="setting-content">
-                <div id="profile">
-                    <h3>Farm Profile</h3>
-                    <p>Update your farm profile information here.</p>
-                    <div class="form-group">
-                        <label for="farm-name">Farm Name</label>
-                        <input type="text" id="farm-name" class="form-control" placeholder="Enter farm name">
-                    </div>
-                    <div class="form-group">
-                        <label for="farm-location">Location</label>
-                        <input type="text" id="farm-location" class="form-control" placeholder="Enter farm location">
-                    </div>
-                    <div class="form-group">
-                        <label for="farm-size">Farm Size (acres)</label>
-                        <input type="number" id="farm-size" class="form-control" placeholder="0">
-                    </div>
-                </div>
-                <div id="unit-currency" style="display:none">
-                    <h3>Unit and Currency</h3>
-                    <p>Set your preferred units and currency for transactions.</p>
-                    <div class="form-group">
-                        <label for="currency">Currency</label>
-                        <select id="currency" class="form-control">
-                            <option>UGX</option>
-                            <option>USD</option>
-                            <option>EUR</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="unit">Preferred Unit</label>
-                        <select id="unit" class="form-control">
-                            <option>kg</option>
-                            <option>tons</option>
-                            <option>bags</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="invoice-settings" style="display:none">
-                    <h3>Invoice Settings</h3>
-                    <p>Configure your invoice settings and templates.</p>
-                    <div class="form-group">
-                        <label for="invoice-prefix">Invoice Number Prefix</label>
-                        <input type="text" id="invoice-prefix" class="form-control" placeholder="INV-">
-                    </div>
-                    <div class="form-group">
-                        <label for="tax-rate">Default Tax Rate (%)</label>
-                        <input type="number" id="tax-rate" class="form-control" placeholder="0" min="0" max="100">
-                    </div>
-                </div>
-                <div id="notifications" style="display:none">
-                    <h3>Notifications</h3>
-                    <p>Manage your notification preferences.</p>
-                    <div class="form-group">
-                        <label><input type="checkbox" checked> Email notifications</label>
-                    </div>
-                    <div class="form-group">
-                        <label><input type="checkbox" checked> SMS notifications</label>
-                    </div>
-                    <div class="form-group">
-                        <label><input type="checkbox"> Push notifications</label>
-                    </div>
-                </div>
-                <div id="security" style="display:none">
-                    <h3>Security</h3>
-                    <p>Update your security settings and password.</p>
-                    <div class="form-group">
-                        <label for="current-password">Current Password</label>
-                        <input type="password" id="current-password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-password">New Password</label>
-                        <input type="password" id="new-password" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm-password">Confirm New Password</label>
-                        <input type="password" id="confirm-password" class="form-control">
-                    </div>
-                </div>
-                <div id="support-privacy" style="display:none">
-                    <h3>Support and Privacy</h3>
-                    <p>Manage your support and privacy preferences.</p>
-                    <div class="form-group">
-                        <label><input type="checkbox" checked> Share usage data for improvements</label>
-                    </div>
-                    <div class="form-group">
-                        <label><input type="checkbox"> Allow marketing communications</label>
+
+            <div class="page-body">
+                <div class="settings-container">
+                    <!-- Settings Navigation Tabs -->
+                    <nav class="settings-nav" role="tablist" aria-label="Settings categories">
+                        <button class="settings-nav-btn active" role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="true" data-tab="profile">
+                            <i class="bi bi-house-door" aria-hidden="true"></i>
+                            <span>Farm Profile</span>
+                        </button>
+                        <button class="settings-nav-btn" role="tab" id="tab-units" aria-controls="panel-units" aria-selected="false" data-tab="units">
+                            <i class="bi bi-cash-stack" aria-hidden="true"></i>
+                            <span>Currency & Units</span>
+                        </button>
+                        <button class="settings-nav-btn" role="tab" id="tab-invoices" aria-controls="panel-invoices" aria-selected="false" data-tab="invoices">
+                            <i class="bi bi-receipt" aria-hidden="true"></i>
+                            <span>Invoice Defaults</span>
+                        </button>
+                    </nav>
+
+                    <!-- Tab Panels -->
+                    <div class="settings-content-wrapper">
+                        <!-- 1. Farm Profile -->
+                        <div class="panel settings-panel active" id="panel-profile" role="tabpanel" aria-labelledby="tab-profile">
+                            <h2 class="panel-heading">Farm & Cooperative Profile</h2>
+                            <p class="panel-subheading">This information appears on your generated invoices and seasonal financial reports.</p>
+
+                            <form class="form-stack" id="profileForm">
+                                <div class="form-grid">
+                                    <div class="form-field">
+                                        <label for="farm-name">Farm / Organization Name</label>
+                                        <input type="text" id="farm-name" name="farmName" placeholder="e.g. Kasokoso Commercial Farm Ltd." value="Kigozi Farm Holdings">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="farm-location">District / Location</label>
+                                        <input type="text" id="farm-location" name="location" placeholder="e.g. Wakiso District, Central Region" value="Wakiso District, Uganda">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="farm-manager">Farm Manager / Contact Person</label>
+                                        <input type="text" id="farm-manager" name="manager" placeholder="e.g. Grace Nansubuga" value="Samuel Kigozi">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="farm-phone">Contact Phone</label>
+                                        <input type="tel" id="farm-phone" name="phone" placeholder="+256 7XX XXX XXX" value="+256 772 458 910">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="farm-size">Farm Size (Acres)</label>
+                                        <input type="number" id="farm-size" name="size" placeholder="e.g. 50" value="75" min="0">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 2. Currency & Units -->
+                        <div class="panel settings-panel" id="panel-units" role="tabpanel" aria-labelledby="tab-units" hidden>
+                            <h2 class="panel-heading">Currency & Units of Measure</h2>
+                            <p class="panel-subheading">Set the standard currency for price quotes and preferred measurement units for harvests.</p>
+
+                            <form class="form-stack" id="unitsForm">
+                                <div class="form-grid">
+                                    <div class="form-field">
+                                        <label for="currency">Primary Currency</label>
+                                        <select id="currency" name="currency">
+                                            <option value="UGX" selected>UGX — Ugandan Shillings</option>
+                                            <option value="USD">USD — US Dollars</option>
+                                            <option value="KES">KES — Kenyan Shillings</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="default-unit">Default Crop Unit</label>
+                                        <select id="default-unit" name="defaultUnit">
+                                            <option value="bags" selected>bags (approx. 50-100 kg standard)</option>
+                                            <option value="kg">kg (Kilograms)</option>
+                                            <option value="crates">crates</option>
+                                            <option value="tons">tons (Metric tonnes)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 3. Invoice Defaults -->
+                        <div class="panel settings-panel" id="panel-invoices" role="tabpanel" aria-labelledby="tab-invoices" hidden>
+                            <h2 class="panel-heading">Invoice Terms & Defaults</h2>
+                            <p class="panel-subheading">Configure initial settings for new invoices generated this season.</p>
+
+                            <form class="form-stack" id="invoiceDefaultsForm">
+                                <div class="form-grid">
+                                    <div class="form-field">
+                                        <label for="invoice-prefix">Invoice Number Prefix</label>
+                                        <input type="text" id="invoice-prefix" name="prefix" value="INV-" placeholder="e.g. INV-">
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="tax-rate">Default Tax Rate (%)</label>
+                                        <input type="number" id="tax-rate" name="taxRate" value="0" min="0" max="100" step="0.1">
+                                    </div>
+                                    <div class="form-field field-full">
+                                        <label for="default-payment">Default Payment Instructions</label>
+                                        <input type="text" id="default-payment" name="paymentInstructions"
+                                            value="Mobile Money: MTN Merchant 849201 or Stanbic A/C 9030018492"
+                                            placeholder="Mobile Money or bank account details">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="../assets/sidebar.js"></script>
-    
+    <script src="settings.js"></script>
 </body>
 </html>

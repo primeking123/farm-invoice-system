@@ -3,70 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
+    <title>Reports | June Harvest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../sidebar/sidebar.css">
+    <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="report.css">
 </head>
 <body>
     <div class="layout">
-    <aside>
-        <div id="sidebar"></div>
-    </aside>
-    <main>
-        <header>
-            <h1>Report</h1>
-            <button>Export</button>
-        </header>
+        <aside class="app-sidebar">
+            <div id="sidebar"></div>
+        </aside>
 
-        <div class="summary-grid">
-            <div class="summary-card">
-                <h3>Total Cost</h3>
-                <div class="value">UGX 11,200,000</div>
+        <div class="page-content">
+            <header class="page-header">
+                <div class="page-title-group">
+                    <p class="page-eyebrow">Financial</p>
+                    <h1>Reports</h1>
+                    <p class="page-intro">Season-level financial performance across invoices and inventory.</p>
+                </div>
+                <div class="header-actions" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                    <select id="reportSeasonFilter" class="search-input" aria-label="Filter by season" style="width:180px;">
+                        <option value="">All seasons</option>
+                    </select>
+                    <div class="export-btn-group" role="group" aria-label="Export report options" style="display:flex;gap:8px;">
+                        <button class="btn btn-secondary" id="exportExcelBtn" type="button" title="Download spreadsheet report in Excel CSV format">
+                            <i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i>
+                            <span>Export Excel</span>
+                        </button>
+                        <button class="btn btn-green" id="exportPdfBtn" type="button" title="Export or print formal financial report as PDF">
+                            <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>
+                            <span>Export PDF</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-body">
+                <!-- Summary metrics -->
+                <section class="metric-grid" aria-label="Financial summary">
+                    <article class="metric">
+                        <span class="metric-label">Total revenue</span>
+                        <strong class="metric-value" id="rRevenue">UGX 0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Total invoices</span>
+                        <strong class="metric-value" id="rInvoices">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Paid</span>
+                        <strong class="metric-value" id="rPaid">UGX 0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Outstanding + overdue</span>
+                        <strong class="metric-value" id="rUnpaid">UGX 0</strong>
+                    </article>
+                </section>
+
+                <!-- Season comparison -->
+                <section class="panel" aria-labelledby="season-comparison-heading">
+                    <h2 class="panel-heading" id="season-comparison-heading">Season comparison</h2>
+                    <p class="panel-subheading">Total invoiced, paid, and outstanding per season.</p>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Season comparison">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Season</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Invoices</th>
+                                    <th scope="col">Total invoiced</th>
+                                    <th scope="col">Paid</th>
+                                    <th scope="col">Outstanding</th>
+                                </tr>
+                            </thead>
+                            <tbody id="seasonComparisonBody">
+                                <tr><td class="empty-state" colspan="6">No season data yet.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Sales by buyer -->
+                <section class="panel" aria-labelledby="buyer-breakdown-heading">
+                    <h2 class="panel-heading" id="buyer-breakdown-heading">Sales by buyer</h2>
+                    <p class="panel-subheading">Revenue contributed by each buyer.</p>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Sales by buyer">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Buyer</th>
+                                    <th scope="col">Invoices</th>
+                                    <th scope="col">Total invoiced</th>
+                                    <th scope="col">Paid</th>
+                                    <th scope="col">Outstanding</th>
+                                </tr>
+                            </thead>
+                            <tbody id="buyerBreakdownBody">
+                                <tr><td class="empty-state" colspan="5">No buyer data yet.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Invoice aging -->
+                <section class="panel" aria-labelledby="aging-heading">
+                    <h2 class="panel-heading" id="aging-heading">Invoice aging</h2>
+                    <p class="panel-subheading">Outstanding and overdue invoices grouped by days elapsed since due date.</p>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Invoice aging">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Buyer</th>
+                                    <th scope="col">Due date</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Days overdue</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agingBody">
+                                <tr><td class="empty-state" colspan="5">No overdue invoices.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Inventory snapshot -->
+                <section class="panel" aria-labelledby="inventory-snapshot-heading">
+                    <h2 class="panel-heading" id="inventory-snapshot-heading">Inventory snapshot</h2>
+                    <p class="panel-subheading">Current stock levels from the inventory.</p>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Inventory snapshot">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Crop</th>
+                                    <th scope="col">Variety</th>
+                                    <th scope="col">On hand</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventorySnapshotBody">
+                                <tr><td class="empty-state" colspan="4">No inventory recorded.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </div>
-            <div class="summary-card">
-                <h3>Yield</h3>
-                <div class="value">18.5 tonnes</div>
-            </div>
-            <div class="summary-card">
-                <h3>Revenue</h3>
-                <div class="value">UGX 15,500,000</div>
-            </div>
-            <div class="summary-card">
-                <h3>Profit</h3>
-                <div class="value">UGX 4,300,000</div>
-            </div>
-            <div class="summary-card">
-                <h3>Margin</h3>
-                <div class="value">27.7%</div>
-            </div>
         </div>
-
-        <div class="report-section">
-            <h2>Cost Report</h2>
-            <p>Cost by category and by month.</p>
-        </div>
-
-        <div class="report-section">
-            <h2>Yield Report</h2>
-            <p>Yield over time and yield per area.</p>
-        </div>
-
-        <div class="report-section">
-            <h2>Sales Report</h2>
-            <p>Revenue by buyer and by month.</p>
-        </div>
-
-        <div class="report-section">
-            <h2>Season Comparison</h2>
-            <p>Cost, yield, revenue, and profit across seasons.</p>
-        </div>
-
-        <div class="report-section">
-            <h2>Invoice Aging</h2>
-            <p>Outstanding invoices grouped by days overdue.</p>
-        </div>
-    </main>
     </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="../assets/sidebar.js"></script>
+    <script src="report.js"></script>
 </body>
 </html>

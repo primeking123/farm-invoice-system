@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory | June Harvest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../sidebar/sidebar.css">
+    <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="inventory.css">
 </head>
 <body class="records-page">
@@ -12,131 +14,104 @@
         <aside class="app-sidebar">
             <div id="sidebar"></div>
         </aside>
+
         <main class="page-content">
             <header class="page-header">
-                <div>
-                    
-                    <h1>Inventory</h1>
-                    <p class="page-intro">Track crop stock, units, and reorder levels in one place.</p>
+                <div class="page-title-group">
+                    <p class="page-eyebrow">Operations</p>
+                    <h1>Crop Inventory</h1>
+                    <p class="page-intro">Track crop stock on hand, units, and reorder levels in one place.</p>
                 </div>
             </header>
 
-            <section class="metric-grid" aria-label="Inventory summary">
-                <article class="metric">
-                    <span class="metric-label">Items tracked</span>
-                    <strong class="metric-value" id="itemCountMetric">3</strong>
-                </article>
-                <article class="metric">
-                    <span class="metric-label">Low stock</span>
-                    <strong class="metric-value" id="lowStockMetric">0</strong>
-                </article>
-                <article class="metric">
-                    <span class="metric-label">Out of stock</span>
-                    <strong class="metric-value" id="outOfStockMetric">1</strong>
-                </article>
-            </section>
-
-            <div class="content-grid">
-                <section class="panel" aria-labelledby="inventory-list-heading">
-                    <h2 class="panel-heading" id="inventory-list-heading">Stock records</h2>
-                    <div class="list-toolbar">
-                        <p class="panel-copy">Current quantities and reorder levels.</p>
-                        <input class="search-input" id="inventorySearch" type="search" placeholder="Search inventory" aria-label="Search inventory">
-                    </div>
-                    <div class="table-scroll">
-                        <table class="records-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Crop</th>
-                                    <th scope="col">Variety</th>
-                                    <th scope="col">On hand</th>
-                                    <th scope="col">Reorder at</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                             <tr>
-                                <td>Beans</td>
-                                <td>-</td>
-                                <td>100 kg</td>
-                                <td>20/9/2026</td>
-                                <td>In stock</td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-danger">Remove</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Potato</td>
-                                <td>-</td>
-                                <td>23 bags</td>
-                                <td>15/7/2026</td>
-                                <td>In stock</td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-danger">Remove</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Banana</td>
-                                <td>-</td>
-                                <td>10 tons</td>
-                                <td>20/9/2026</td>
-                                <td>out of stock</td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-danger">Remove</button>
-                                </td>
-                            </tr>
-
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="page-body">
+                <section class="metric-grid" aria-label="Inventory summary">
+                    <article class="metric">
+                        <span class="metric-label">Items tracked</span>
+                        <strong class="metric-value" id="itemCountMetric">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Low stock</span>
+                        <strong class="metric-value" id="lowStockMetric">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Out of stock</span>
+                        <strong class="metric-value" id="outOfStockMetric">0</strong>
+                    </article>
                 </section>
 
-                <section class="panel" aria-labelledby="inventory-form-heading">
-                    <h2 class="panel-heading" id="inventory-form-heading">Add inventory</h2>
-                    <p class="panel-copy">Add a crop or record newly received stock.</p>
-                    <form class="record-form" id="inventoryForm">
-                        <div class="form-field">
-                            <label for="cropName">Crop</label>
-                            <input id="cropName" name="name" type="text" placeholder="e.g. Maize" required maxlength="60">
+                <div class="content-grid">
+                    <section class="panel" aria-labelledby="inventory-list-heading">
+                        <div class="list-toolbar">
+                            <div>
+                                <h2 class="panel-heading" id="inventory-list-heading">Stock records</h2>
+                                <p class="panel-subheading">Current quantities and reorder thresholds.</p>
+                            </div>
+                            <input class="search-input" id="inventorySearch" type="search" placeholder="Search inventory…" aria-label="Search inventory">
                         </div>
-                        <div class="form-field">
-                            <label for="cropVariety">Variety (optional)</label>
-                            <input id="cropVariety" name="variety" type="text" maxlength="60">
+                        <div class="table-scroll">
+                            <table class="data-table records-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Crop</th>
+                                        <th scope="col">Variety</th>
+                                        <th scope="col">On hand</th>
+                                        <th scope="col">Reorder at</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryRows">
+                                    <tr><td class="empty-state" colspan="6">Loading inventory...</td></tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="form-field">
-                            <label for="cropQuantity">Quantity received</label>
-                            <input id="cropQuantity" name="quantity" type="number" min="0.01" step="0.01" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="cropUnit">Unit</label>
-                            <select id="cropUnit" name="unit">
-                                <option value="kg">kg</option>
-                                <option value="bags">bags</option>
-                                <option value="crates">crates</option>
-                                <option value="tons">tons</option>
-                                <option value="liters">liters</option>
-                                <option value="pieces">pieces</option>
-                            </select>
-                        </div>
-                        <div class="form-field">
-                            <label for="reorderAt">Reorder level</label>
-                            <input id="reorderAt" name="reorderAt" type="number" min="0" step="0.01" value="0" required>
-                        </div>
-                        <div class="form-actions">
-                            <button class="button button-primary" type="submit">Save item</button>
-                        </div>
-                        <p class="form-message" id="inventoryMessage" aria-live="polite"></p>
-                    </form>
-                </section>
+                    </section>
+
+                    <section class="panel" aria-labelledby="inventory-form-heading">
+                        <h2 class="panel-heading" id="inventory-form-heading">Add inventory</h2>
+                        <p class="panel-subheading">Add a crop or record newly received harvest stock.</p>
+                        <form class="record-form form-stack" id="inventoryForm" novalidate>
+                            <div class="form-grid">
+                                <div class="form-field">
+                                    <label for="cropName">Crop</label>
+                                    <input id="cropName" name="name" type="text" placeholder="e.g. Maize" required maxlength="60">
+                                </div>
+                                <div class="form-field">
+                                    <label for="cropVariety">Variety (optional)</label>
+                                    <input id="cropVariety" name="variety" type="text" placeholder="e.g. Longe 5" maxlength="60">
+                                </div>
+                                <div class="form-field">
+                                    <label for="cropQuantity">Quantity received</label>
+                                    <input id="cropQuantity" name="quantity" type="number" min="0.01" step="0.01" placeholder="e.g. 50" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="cropUnit">Unit</label>
+                                    <select id="cropUnit" name="unit">
+                                        <option value="bags">bags</option>
+                                        <option value="kg">kg</option>
+                                        <option value="crates">crates</option>
+                                        <option value="tons">tons</option>
+                                        <option value="liters">liters</option>
+                                        <option value="pieces">pieces</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="reorderAt">Reorder level</label>
+                                    <input id="reorderAt" name="reorderAt" type="number" min="0" step="0.01" value="10" required>
+                                </div>
+                            </div>
+                            <div class="form-actions" style="margin-top: 10px;">
+                                <button class="btn btn-green" type="submit">Save stock item</button>
+                            </div>
+                            <p class="form-message" id="inventoryMessage" aria-live="polite" role="status"></p>
+                        </form>
+                    </section>
+                </div>
             </div>
         </main>
     </div>
+
     <script src="../assets/sidebar.js"></script>
     <script src="inventory.js"></script>
 </body>

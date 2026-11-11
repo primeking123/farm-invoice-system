@@ -3,149 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>June Harvest | Buyers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Buyers | June Harvest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../sidebar/sidebar.css">
+    <link rel="stylesheet" href="../assets/app.css">
     <link rel="stylesheet" href="buyer.css">
 </head>
 <body>
     <div class="layout">
-        <aside>
+        <aside class="app-sidebar">
             <div id="sidebar"></div>
         </aside>
-        <main class="content">
-            <header>
-                <h1>Buyers</h1>
-                <button>Add Buyer</button>
+
+        <div class="page-content">
+            <header class="page-header">
+                <div class="page-title-group">
+                    <p class="page-eyebrow">Contacts</p>
+                    <h1>Buyers</h1>
+                    <p class="page-intro">Manage the businesses and individuals you sell produce to.</p>
+                </div>
+                <button class="btn btn-green" id="openAddBuyerBtn" type="button">
+                    <i class="bi bi-plus" aria-hidden="true"></i>
+                    Add buyer
+                </button>
             </header>
 
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <h3>Total Buyers</h3>
-                    <div class="value">4</div>
-                </div>
-                <div class="summary-card">
-                    <h3>Total Invoiced</h3>
-                    <div class="value">UGX 68,450,000</div>
-                </div>
-                <div class="summary-card">
-                    <h3>Outstanding</h3>
-                    <div class="value">UGX 11,250,000</div>
-                </div>
+            <div class="page-body">
+                <!-- Summary metrics -->
+                <section class="metric-grid" aria-label="Buyer summary">
+                    <article class="metric">
+                        <span class="metric-label">Total buyers</span>
+                        <strong class="metric-value" id="totalBuyers">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Total invoiced</span>
+                        <strong class="metric-value" id="totalInvoiced">UGX 0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Outstanding</span>
+                        <strong class="metric-value" id="totalOutstanding">UGX 0</strong>
+                    </article>
+                </section>
+
+                <!-- Buyer list -->
+                <section class="panel" aria-labelledby="buyer-list-heading">
+                    <div class="list-toolbar">
+                        <div>
+                            <h2 class="panel-heading" id="buyer-list-heading">Buyer list</h2>
+                            <p class="panel-subheading">All registered buyers and their invoice summary.</p>
+                        </div>
+                        <input class="search-input" id="buyerSearch" type="search"
+                            placeholder="Search buyers…" aria-label="Search buyers">
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Buyer list">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Buyer</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">District</th>
+                                    <th scope="col">Total invoiced</th>
+                                    <th scope="col">Outstanding</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="buyerTableBody">
+                                <tr>
+                                    <td class="empty-state" colspan="6">No buyers yet. Add your first buyer to get started.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Add / Edit Buyer form -->
+                <section class="panel" id="buyerFormPanel" aria-labelledby="buyer-form-heading" hidden>
+                    <h2 class="panel-heading" id="buyer-form-heading">Add a buyer</h2>
+                    <p class="panel-subheading">Buyer details will be available when creating invoices.</p>
+
+                    <form class="form-stack" id="buyerForm" novalidate>
+                        <input type="hidden" id="editBuyerId">
+
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="buyerName">Name</label>
+                                <input type="text" id="buyerName" name="name"
+                                    placeholder="e.g. Kampala Fresh Produce Ltd."
+                                    required maxlength="100">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="buyerDistrict">District</label>
+                                <input type="text" id="buyerDistrict" name="district"
+                                    placeholder="e.g. Wakiso" maxlength="60">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="buyerContact">Contact person</label>
+                                <input type="text" id="buyerContact" name="contact"
+                                    placeholder="Full name" maxlength="80">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="buyerPhone">Phone</label>
+                                <input type="tel" id="buyerPhone" name="phone"
+                                    placeholder="+256 7XX XXX XXX">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="buyerEmail">Email (optional)</label>
+                                <input type="email" id="buyerEmail" name="email"
+                                    placeholder="name@example.com">
+                            </div>
+
+                            <div class="form-field field-full">
+                                <label for="buyerNotes">Notes (optional)</label>
+                                <textarea id="buyerNotes" name="notes" rows="2"
+                                    placeholder="Payment terms, preferred contact method, etc."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-green" type="submit">Save buyer</button>
+                            <button class="btn btn-secondary" type="button" id="cancelBuyerBtn">Cancel</button>
+                        </div>
+                        <p class="form-message" id="buyerMessage" aria-live="polite" role="status"></p>
+                    </form>
+                </section>
             </div>
-
-            <div class="navbar">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search buyers..." aria-label="Search">
-                    <button class="btn-outline theme-success" type="submit">Search</button>
-                </form>
-            </div>
-
-            <section>
-                <h3>Buyer List</h3>
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle buyer-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Buyer</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">District</th>
-                                <th scope="col">Invoices</th>
-                                <th scope="col">Total invoiced</th>
-                                <th scope="col">Outstanding</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Kampala Fresh Produce Ltd.</td>
-                                <td>Grace Nansubuga<br><a href="tel:+256772123456">+256 772 123456</a></td>
-                                <td>Kampala</td>
-                                <td>14</td>
-                                <td>UGX 24,500,000</td>
-                                <td>UGX 2,100,000</td>
-                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jinja Grain Traders</td>
-                                <td>Peter Ssemanda<br><a href="tel:+256783441208">+256 783 441208</a></td>
-                                <td>Jinja</td>
-                                <td>8</td>
-                                <td>UGX 12,750,000</td>
-                                <td>UGX 0</td>
-                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Mbarara Produce Cooperative</td>
-                                <td>Sarah Atim<br><a href="tel:+256701665932">+256 701 665932</a></td>
-                                <td>Mbarara</td>
-                                <td>23</td>
-                                <td>UGX 23,400,000</td>
-                                <td>UGX 8,750,000</td>
-                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Gulu Agro Supplies</td>
-                                <td>Daniel Ocen<br><a href="tel:+256752908314">+256 752 908314</a></td>
-                                <td>Gulu</td>
-                                <td>5</td>
-                                <td>UGX 7,800,000</td>
-                                <td>UGX 400,000</td>
-                                <td><button class="btn btn-sm btn-outline-success" type="button">View</button> <button class="btn btn-sm btn-outline-secondary" type="button">Edit</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section>
-                <h3>Add / Edit Buyer</h3>
-                <form class="form-grid">
-                    <div class="form-group">
-                        <label for="buyer-name">Name</label>
-                        <input type="text" id="buyer-name" class="form-control" placeholder="Buyer full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="buyer-district">District</label>
-                        <input type="text" id="buyer-district" class="form-control" placeholder="e.g. Wakiso">
-                    </div>
-                    <div class="form-group">
-                        <label for="buyer-phone">Phone</label>
-                        <input type="tel" id="buyer-phone" class="form-control" placeholder="+256 7XX XXX XXX">
-                    </div>
-                    <div class="form-group">
-                        <label for="buyer-email">Email</label>
-                        <input type="email" id="buyer-email" class="form-control" placeholder="Email address">
-                    </div>
-                    <div class="form-group">
-                        <label for="buyer-notes">Notes</label>
-                        <textarea id="buyer-notes" class="form-control" rows="3" placeholder="Optional notes"></textarea>
-                    </div>
-                    <div class="form-group" style="display:flex; gap:0.5rem;">
-                        <button type="submit" style="flex:1;">Save Buyer</button>
-                        <button type="reset" style="flex:1; background-color: var(--bg-sub); color: var(--secondary);">Cancel</button>
-                    </div>
-                </form>
-            </section>
-
-            <section>
-                <h3>Buyer Details</h3>
-                <div class="detail-grid">
-                    <div class="detail-card">
-                        <h4>Buyer Summary</h4>
-                        <p>Total Invoiced: <strong>0</strong></p>
-                        <p>Paid: <strong>0</strong></p>
-                        <p>Outstanding: <strong>0</strong></p>
-                    </div>
-                    <div class="detail-card">
-                        <h4>Buyer Invoices</h4>
-                        <p>No invoices yet</p>
-                        <button>Add Invoice</button>
-                    </div>
-                </div>
-            </section>
-        </main>
+        </div>
     </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="../assets/sidebar.js"></script>
+    <script src="buyer.js"></script>
 </body>
 </html>

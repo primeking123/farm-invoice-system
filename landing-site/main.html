@@ -3,42 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>June Harvest | Farm Invoice System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <title>June Harvest | Farm Invoice & Financial Management System</title>
+    <meta name="description" content="Capture farm activities through the seasons and turn them into finance statements, invoices, and bank-ready reports for commercial farmers and cooperatives.">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom Landing Site Styles -->
     <link rel="stylesheet" href="landing-site.css">
 </head>
 <body>
-    <nav class="nav-bar">
-        <header>
+    <!-- Top Navigation Bar -->
+    <header class="site-header">
+        <nav class="nav-bar" aria-label="Main Navigation">
             <div class="logo">
-                <i class="bi bi-database"></i>
-                <span class="logo-text">June Harvest</span>
+                <a href="#hero" class="logo-link" aria-label="June Harvest Homepage">
+                    <span class="logo-icon-box">
+                        <i class="bi bi-database" aria-hidden="true"></i>
+                    </span>
+                    <span class="logo-text">June Harvest</span>
+                </a>
             </div>
-        </header>
-        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#solution">Solution</a></li>
-            <li><a href="#how-it-works">How it works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#get-started">Get Started</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div id="hero"></div>
-        <div id="solution"></div>
-        <div id="how-it-works"></div>
-        <div id="pricing"></div>
-        <div id="about"></div>
-        <div id="contact"></div>
-        <div id="get-started"></div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav-menu-wrapper" id="navLinks">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-anchor active">Home</a></li>
+                    <li><a href="#solution" class="nav-anchor">Solution</a></li>
+                    <li><a href="#how-it-works" class="nav-anchor">How It Works</a></li>
+                    <li><a href="#pricing" class="nav-anchor">Pricing</a></li>
+                    <li><a href="#about" class="nav-anchor">About</a></li>
+                    <li><a href="#contact" class="nav-anchor">Contact</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="../june-harvest-app/dashboard/dashboard.html" class="btn btn-nav-cta">
+                        <span>Launch App</span>
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container with dynamic section loading -->
+    <main id="main-content">
+        <div id="hero" class="section-wrapper"></div>
+        <div id="solution" class="section-wrapper"></div>
+        <div id="how-it-works" class="section-wrapper"></div>
+        <div id="pricing" class="section-wrapper"></div>
+        <div id="about" class="section-wrapper"></div>
+        <div id="contact" class="section-wrapper"></div>
+        <div id="get-started" class="section-wrapper"></div>
     </main>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+    <!-- Global Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon-box">
+                            <i class="bi bi-database" aria-hidden="true"></i>
+                        </span>
+                        <span class="logo-text">June Harvest</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Bridging the gap between farming activities and financial access across East Africa.
+                    </p>
+                </div>
+
+                <div class="footer-nav-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="../june-harvest-app/dashboard/dashboard.html">Dashboard</a></li>
+                        <li><a href="../june-harvest-app/seasons/seasons.html">Seasons Manager</a></li>
+                        <li><a href="../june-harvest-app/inventory/inventory.html">Crop Inventory</a></li>
+                        <li><a href="../june-harvest-app/invoice/invoice.html">Invoices</a></li>
+                        <li><a href="../june-harvest-app/reports/report.html">Financial Reports</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-col">
+                    <h4>Company & Solutions</h4>
+                    <ul>
+                        <li><a href="#solution">Solution Overview</a></li>
+                        <li><a href="#how-it-works">Quarterly Cycles</a></li>
+                        <li><a href="#pricing">Pricing Plans</a></li>
+                        <li><a href="#about">Our Mission</a></li>
+                        <li><a href="#contact">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-col">
+                    <h4>Audience</h4>
+                    <ul>
+                        <li><a href="#solution">Commercial Farmers</a></li>
+                        <li><a href="#solution">Farmer Cooperatives</a></li>
+                        <li><a href="#solution">Produce Buyers</a></li>
+                        <li><a href="#solution">Agricultural Lenders</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 June Harvest Systems. Built for high visibility, durability, and commercial agricultural growth.</p>
+                <div class="footer-bottom-links">
+                    <a href="#hero">Back to Top &uarr;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Toast Container -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="index.js"></script>
-    <footer><p>JUNE Harvest.com &copy;2026</p></footer>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,94 +1,130 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="seasons.css">
-        <title>Seasons</title>
-        <link rel="stylesheet" href="../sidebar/sidebar.css">
-    </head>
-    <body>
-        <div class="layout">
-        <aside>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasons | June Harvest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../sidebar/sidebar.css">
+    <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="seasons.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="app-sidebar">
             <div id="sidebar"></div>
         </aside>
-        <main>
-        <header>
-            <h1>Seasons</h1>
-        <p>Organize growing periods and keep the active season clear cross your records.</p>
+
+        <div class="page-content">
+            <header class="page-header">
+                <div class="page-title-group">
+                    <p class="page-eyebrow">Farm management</p>
+                    <h1>Seasons</h1>
+                    <p class="page-intro">Organise growing periods and keep the active season clear across your records.</p>
+                </div>
+                <button class="btn btn-green" id="openAddSeasonBtn" type="button">
+                    <i class="bi bi-plus" aria-hidden="true"></i>
+                    Add season
+                </button>
             </header>
-        <div class="season-row">
-            <div class="season-card">
-                <p>Active</p>
-                <h2>3</h2>
-            </div>
-            <div class="season-card">
-                <p>Planned seasons</p>
-                <h2>1</h2>
-            </div>
-            <div class="season-card">
-                <p>Complete seasons</p>
-                <h2>0</h2>
+
+            <div class="page-body">
+                <!-- Summary metrics -->
+                <section class="metric-grid" aria-label="Season summary">
+                    <article class="metric">
+                        <span class="metric-label">Active</span>
+                        <strong class="metric-value" id="activeCount">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Planned</span>
+                        <strong class="metric-value" id="plannedCount">0</strong>
+                    </article>
+                    <article class="metric">
+                        <span class="metric-label">Completed</span>
+                        <strong class="metric-value" id="completedCount">0</strong>
+                    </article>
+                </section>
+
+                <!-- Season records table -->
+                <section class="panel" aria-labelledby="season-list-heading">
+                    <div class="list-toolbar">
+                        <div>
+                            <h2 class="panel-heading" id="season-list-heading">Season records</h2>
+                            <p class="panel-subheading">Your saved growing periods and their current status.</p>
+                        </div>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table" aria-label="Season records">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Season</th>
+                                    <th scope="col">Start date</th>
+                                    <th scope="col">End date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="seasonTableBody">
+                                <tr>
+                                    <td class="empty-state" colspan="5">No seasons yet. Add your first season to get started.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Add / Edit Season form -->
+                <section class="panel" id="seasonFormPanel" aria-labelledby="season-form-heading" hidden>
+                    <h2 class="panel-heading" id="season-form-heading">Add a season</h2>
+                    <p class="panel-subheading">Seasons are divided by farming quarters (e.g. Quarter 2–2026).</p>
+
+                    <form class="form-stack" id="seasonForm" novalidate>
+                        <input type="hidden" id="editSeasonId">
+
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="seasonName">Season name</label>
+                                <input type="text" id="seasonName" name="name"
+                                    placeholder="e.g. Quarter 2–2026"
+                                    required maxlength="60"
+                                    aria-describedby="seasonNameHint">
+                                <span class="form-help" id="seasonNameHint">Use format: Quarter N–YYYY</span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="seasonStatus">Status</label>
+                                <select id="seasonStatus" name="status" required>
+                                    <option value="planned">Planned</option>
+                                    <option value="active">Active</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="seasonStart">Start date</label>
+                                <input type="date" id="seasonStart" name="startDate" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="seasonEnd">End date</label>
+                                <input type="date" id="seasonEnd" name="endDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-green" type="submit">Save season</button>
+                            <button class="btn btn-secondary" type="button" id="cancelSeasonBtn">Cancel</button>
+                        </div>
+                        <p class="form-message" id="seasonMessage" aria-live="polite" role="status"></p>
+                    </form>
+                </section>
             </div>
         </div>
+    </div>
 
-        <div class="season-created">
-            <h2>Season records</h2>
-            <p>Your saved growing periods and thier current status</p>
-            <table>
-                <tr>
-                <th>
-                    Season
-                </th>
-                <th>
-                    Start
-                </th>
-                <th>
-                    End
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>
-                    Action
-                </th>
-                </tr>
-                <tr>
-                    <td>Season_1</td>
-                    <td>24/03/26</td>
-                    <td>23/05/26</td>
-                    <td>Done</td>
-                    <td>Complete</td>
-                </tr>
-                <tr>
-                    <td>Quater_2</td>
-                    <td>24/05/26</td>
-                    <td>23/07/26</td>
-                    <td>Ongoing</td>
-                    <td>Active</td>
-                </tr>
-            </table>
-        </div>
-        <div class="Contain">
-            <h3>Add a Season</h3>
-            <label for="Season_name">Season name</label>
-            <input type="text" id="Season_name" placeholder="e.g. Quater 1 2026">
-            <label for="Start_date">Start_date</label>
-            
-     <input type="text" id="Start_date" placeholder="mm/dd/yyyy">
-    <label for="End_date">End_date</label>
-<input type="text" id="End_date" placeholder="mm/dd/yyyy">
-<label for="Status">Status</label>
-<select name="Choices" id="Status">
-    <option value="Planned">Planned</option>
-    <option value="Active">Active</option>
-    <option value="Completed">Complete</option>
-</select>
-        <button>Save Season</button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-         </div>
-
-</main>
-</div>
-        <script src="../assets/sidebar.js"></script>
-    </body>
+    <script src="../assets/sidebar.js"></script>
+    <script src="seasons.js"></script>
+</body>
 </html>
